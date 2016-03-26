@@ -1,27 +1,50 @@
 #!/bin/python
-def nextMove(n,r,c,grid):
-    for y in range (0,n):
-     for x in range (0,n):
-        if grid[y][x] == 'p' :
-            break
-     if grid[y][x] == 'p' :
-            break
-            
-    if y > r :  #princess below bot
-        next = "DOWN"
-    elif y < r : #princess above bot
-        next = "UP"
-    
-    if x > c : #princess on the right
-        next = "RIGHT"
-    if x < c : #princess on the left
-        next = "LEFT"
-        
-    return next
-n = input()
-r,c = [int(i) for i in raw_input().strip().split()]
-grid = []
-for i in xrange(0, n):
-    grid.append(raw_input())
+import sys
+import fileinput
+import math
 
-print nextMove(n,r,c,grid)
+def displayPathtoPrincess(n,grid):
+    x = 0
+    y = 0
+    i = (n-1)/2
+    if grid[0][0] == 'p':
+        #top left
+        count = 0
+        while count<i:
+            count+=1
+            print "UP"
+            print "LEFT"
+            
+    elif grid[0][n-1]=='p':
+        loc = 'tr'
+        count = 0
+        while count<i :
+            count+=1
+            print "UP"
+            print "RIGHT"
+            
+    elif grid[n-1][0]=='p':
+        loc = 'bl'
+        count = 0
+        while count<i :
+            count+=1
+            print "DOWN"
+            print "LEFT"
+            
+    elif grid[n-1][n-1]=='p':
+        loc = 'br'
+        count = 0
+        while count<i :
+            count+=1
+            print "DOWN"
+            print "RIGHT"
+            
+    return
+    
+m = input()
+
+grid = []
+for i in xrange(0, m):
+    grid.append(raw_input().strip())
+
+displayPathtoPrincess(m,grid)
