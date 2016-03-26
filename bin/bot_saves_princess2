@@ -1,6 +1,23 @@
 #!/bin/python
 def nextMove(n,r,c,grid):
-    return ""
+    for y in range (0,n):
+     for x in range (0,n):
+        if grid[y][x] == 'p' :
+            break
+     if grid[y][x] == 'p' :
+            break
+            
+    if y > r :  #princess below bot
+        next = "DOWN"
+    elif y < r : #princess above bot
+        next = "UP"
+    
+    if x > c : #princess on the right
+        next = "RIGHT"
+    if x < c : #princess on the left
+        next = "LEFT"
+        
+    return next
 n = input()
 r,c = [int(i) for i in raw_input().strip().split()]
 grid = []
